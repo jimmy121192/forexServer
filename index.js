@@ -1,7 +1,7 @@
 const express = require("express");
 var app = express();
 var fetch = require('node-fetch');
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
