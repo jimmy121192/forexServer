@@ -11,7 +11,7 @@ app.use(function(req, res, next) {
 
   app.get("/rates/:currencyId", function(req, resp){
     var currencyId = req.params.currencyId;
-    fetch("https://api.exchangeratesapi.io/latest?base="+currencyId+"&symbols=CAD,USD,GBP,EUR,AUD,JPY,CHF,CNY").then(function(resp){
+    fetch("https://api.exchangeratesapi.io/latest?base="+currencyId+"&symbols=CAD,USD,GBP,EUR,AUD,CHF,CNY").then(function(resp){
 			
         return resp.json();
     }).then(function(json){
