@@ -3,6 +3,17 @@ var app = express();
 var fetch = require('node-fetch');
 const port = process.env.PORT || 3000;
 
+// const jsonServer = require("json-server");
+// const path = require("path");
+// const server = jsonServer.create();
+// const router = jsonServer.router(path.join(__dirname, "listDB.json"));
+// const middlewares = jsonServer.defaults();
+// server.use(middlewares);
+// server.use(router);
+// server.listen(8080, () => {
+//   console.log("JSON Server is running");
+// });
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
@@ -21,9 +32,10 @@ app.use(function(req, res, next) {
 
 })
 
-app.get("/history", function(req, resp){
-    
-    fetch("https://api.exchangeratesapi.io/history?start_at=2019-01-01&end_at=2019-01-19&symbols=USD&base=CAD").then(function(resp){
+app.get("/history/:dataObj", function(req, resp){
+    var dataObj = req.params.dataObj;
+
+    fetch("https://api.exchangeratesapi.io/history?start_at="+dataObj.staDate+"&end_at="+dataObj.curDate+"&symbols="+dataObj.quoCurr+"&base="+dataObj.staDate+"").then(function(resp){
 			
         return resp.json();
     }).then(function(json){
