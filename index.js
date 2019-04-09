@@ -1,7 +1,7 @@
 const express = require("express");
 var app = express();
 var fetch = require('node-fetch');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8800;
 
 // const jsonServer = require("json-server");
 // const path = require("path");
@@ -33,9 +33,9 @@ app.use(function(req, res, next) {
 })
 
 app.get("/history/:dataObj", function(req, resp){
-    var dataObj = req.params.dataObj;
-
-    fetch("https://api.exchangeratesapi.io/history?start_at="+dataObj.staDate+"&end_at="+dataObj.curDate+"&symbols="+dataObj.quoCurr+"&base="+dataObj.staDate+"").then(function(resp){
+    var dataObj = JSON.parse(req.params.dataObj);
+    console.log(dataObj)
+    fetch("https://api.exchangeratesapi.io/history?start_at="+dataObj.staDate+"&end_at="+dataObj.curDate+"&symbols="+dataObj.quoCurr+"&base="+dataObj.baseCurr+"").then(function(resp){
 			
         return resp.json();
     }).then(function(json){
