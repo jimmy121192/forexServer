@@ -16,7 +16,7 @@ const port = process.env.PORT || 8800;
 
 var http = require("http");
 setInterval(function() {
-    http.get("http://<your app name>.herokuapp.com");
+    http.get("http://jimmy-forexapp.herokuapp.com");
 }, 300000); // every 5 minutes (300000)
 
 app.use(function(req, res, next) {
