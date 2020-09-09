@@ -20,7 +20,7 @@ setInterval(function() {
 }, 300000); // every 5 minutes (300000)
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "'https://forexapp.netlify.app");
+    res.header("Access-Control-Allow-Origin", "https://forexapp.netlify.app");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
